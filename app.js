@@ -3,29 +3,43 @@ function select(tag){
 }
 const _html = select("html");
 const _canvas = select("canvas");
-const _ctx = _canvas.getContext('2d');
 const _range = select("input[type=range]");
+const _color = document.getElementsByClassName("color")
+const ctx = _canvas.getContext('2d');
+
+_canvas.width = 700;
+_canvas.height = 700;
+
+ctx.strokeStyle = "rgb(0,0,0)"
+ctx.lineWidth = 2.5;
 
 let painting = false;
-function stop_painting(){
-  painting = false;
-}
-function handle_mouseMove(){
-  if (painting){
-    console.log(event.offsetX, event.offsetY);
-  }
-}
-function handle_mouseDown(){
+function start_paint(){
   painting = true;
 }
-function handle_mouseUp(){
-  stop_painting()
+function stop_paint(){
+  painting = false;
+  ctx.closePath();
 }
 
-if (_canvas){
+function handle_mouseMove(){
+  const _x = event.offsetX,
+        _y = event.offsetY;
+  if (!painting){
+    ctx.beginPath();
+    ctx.moveTo(_x, _y);
+  }else{
+    ctx.lineTo(_x,_y);
+    ctx.stroke();
+  }
+}
+
+function init(){
   canvas.addEventListener("mousemove", handle_mouseMove);
-  canvas.addEventListener("mousedown", handle_mouseDown);
-  _html.addEventListener("mouseup", handle_mouseUp);
-  // canvas.addEventListener("mouseout", stop_painting);
-
+  canvas.addEventListener("mousedown", start_paint);
+  _html.addEventListener("mouseup", stop_paint);
+  Array.from(_color).forEach(x => x.addEventListener('click',
+  () => {ctx.strokeStyle=event.target.style.backgroundColor;}))
+  _range.addEventListener('input',()=>{ctx.lineWidth=_range.value})
 }
+init();
