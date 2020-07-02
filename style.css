@@ -6,24 +6,52 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 0px;
+  padding: 30px 0px;
 }
-#canvas {
+canvas {
   width: 700px;
   height: 700px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+.controls{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.range{
+  display: block;
+  margin-top: 1.5em;
+}
+.buttons{
+  display: flex;
+  margin-top: 1em;
+}
+.buttons>button{
+  all: unset;
+  padding: 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+  border: rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.buttons>button:active{
+  transform: scale(0.95);
+}
 .colors{
   display:flex;
-  margin-top: 30px;
+  margin-top: 1em;
 }
 .color{
-  width:50px;
-  height: 50px;
-  margin: 2px;
+  width: 3.5em;
+  height: 3.5em;
+  margin: 0.05em;
   border-radius: 50%;
-  border: 1px solid rgba(134, 134, 134, 0.2);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
