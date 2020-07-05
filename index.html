@@ -10,12 +10,16 @@
   <body>
     <div class="wrapper">
       <div class="canvas_control">
-        <p>Canvas Size :</p>
-        <form action="">
-          <input type="number" id="width" min="400" max="1200" value="700" step="50">
-          <input type="number" id="height" min="400" max="1200" value="700" step="50">
-          <button type="submit" id="size_submit">resize</button>
-        </form>
+        <label for="img_upload">Choose images to upload (PNG, JPG)</label>
+        <input type="file" id="img_upload" accept="image/png, image/jpeg">
+        <span>
+          <p>Canvas Size :</p>
+          <form action="">
+            <input type="number" id="width" min="400" max="1200" value="700" step="50">
+            <input type="number" id="height" min="400" max="1200" value="700" step="50">
+            <button type="submit" id="size_submit">resize</button>
+          </form>
+        </span>
       </div>
       <div class="center">
         <canvas id="canvas">Can't load use Chrome.exe plz</canvas>

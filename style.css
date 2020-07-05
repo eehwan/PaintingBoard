@@ -21,7 +21,21 @@ body {
   width: 100%;
   padding: 0.5em 3.5em;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+.canvas_control>label{
+  padding: 0.4em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 0.3em;
+  border: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0.25em 0.375em rgba(50, 50, 93, 0.11), 0 0.0625em 0.1875em rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+#img_upload{
+  display: none;
 }
 .canvas_control>p{
   padding: 0 0.5em;

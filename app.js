@@ -8,6 +8,7 @@ const _line_width = select("#line_width");
 const _colors = document.getElementsByClassName("color")
 const _mode = select("#mode");
 const _save = select("#save");
+const _file = select("#img_upload");
 
 const ctx = _canvas.getContext('2d');
 
@@ -39,9 +40,9 @@ function handle_size(e){
 }
 
 // 색상관련
-ctx.fillStyle = "#ffffff";
-ctx.fillRect(0,0, _canvas.width, _canvas.height);
-ctx.fillStyle = _custom_color.value;
+// ctx.fillStyle = "#ffffff";
+// ctx.fillRect(0,0, _canvas.width, _canvas.height);
+// ctx.fillStyle = _custom_color.value;
 function handle_color(color){
   _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
   ctx.strokeStyle = color;
@@ -116,6 +117,16 @@ function handle_save(){
     link.click();
   }
 }
+function handle_file(){
+  const file_list = _file.files
+  for(const file of _file.files){
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = function(e){
+      ctx.drawImage(img, 0, 0, _canvas.width, _canvas.height);
+    }
+  }
+}
 
 function init(){
   // 캔버스 크기
@@ -136,5 +147,6 @@ function init(){
   // 버튼
   _mode.addEventListener('change', handle_mode);
   _save.addEventListener('click', handle_save);
+  _file.addEventListener('change', handle_file);
 }
 init();
