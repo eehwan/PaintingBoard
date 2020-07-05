@@ -4,7 +4,7 @@ function select(tag){
 
 const _html = select("html");
 const _canvas = select("canvas");
-const _range = select("input[type=range]");
+const _line_width = select("#line_width");
 const _colors = document.getElementsByClassName("color")
 const _mode = select("#mode");
 const _save = select("#save");
@@ -15,7 +15,7 @@ const _custom_color = select("#custom_color");
 
 // 펜 설정 초기화
 // ctx.strokeStyle = _custom_color.value;
-// ctx.lineWidth = _range.value;
+// ctx.lineWidth = _line_width.value;
 // 둘다 적용이 안되는데 아마
 
 
@@ -39,6 +39,9 @@ function handle_size(e){
 }
 
 // 색상관련
+ctx.fillStyle = "#ffffff";
+ctx.fillRect(0,0, _canvas.width, _canvas.height);
+ctx.fillStyle = _custom_color.value;
 function handle_color(color){
   _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
   ctx.strokeStyle = color;
@@ -94,7 +97,6 @@ function fill(){
 
 // 버튼 관련
 function handle_mode(){
-  console.log(_mode.value)
   if (_mode.value == 'draw'){
     // _canvas.style.cursor=
     filling = false;
@@ -119,8 +121,8 @@ function init(){
   // 캔버스 크기
   _size_submit.addEventListener('click', ()=>handle_size(event));
   // 선 굵기
-  ctx.lineWidth=_range.value
-  _range.addEventListener('input',()=>{ctx.lineWidth=_range.value});
+  ctx.lineWidth=_line_width.value
+  _line_width.addEventListener('input',()=>{ctx.lineWidth=_line_width.value});
   // 색상
   Array.from(_colors).forEach(x => x.addEventListener('click',
   () => handle_color(event.target.style.backgroundColor) ));
