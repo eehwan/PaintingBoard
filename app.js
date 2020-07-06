@@ -21,7 +21,7 @@ const _custom_color = select("#custom_color");
 
 
 // 캔버스 크기 관련
-const _size_submit = select("#size_submit");
+const _form_size = select("#form_size");
 const _input_width = select("#width"),
       _input_height = select("#height");
 let _canvas_width = _input_width.value,
@@ -40,9 +40,9 @@ function handle_size(e){
 }
 
 // 색상관련
-// ctx.fillStyle = "#ffffff";
-// ctx.fillRect(0,0, _canvas.width, _canvas.height);
-// ctx.fillStyle = _custom_color.value;
+ctx.fillStyle = "#ffffff";
+ctx.fillRect(0,0, _canvas.width, _canvas.height);
+ctx.fillStyle = _custom_color.value;
 function handle_color(color){
   _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
   ctx.strokeStyle = color;
@@ -130,7 +130,7 @@ function handle_file(){
 
 function init(){
   // 캔버스 크기
-  _size_submit.addEventListener('click', ()=>handle_size(event));
+  _form_size.addEventListener('submit', ()=>handle_size(event));
   // 선 굵기
   ctx.lineWidth=_line_width.value
   _line_width.addEventListener('input',()=>{ctx.lineWidth=_line_width.value});
