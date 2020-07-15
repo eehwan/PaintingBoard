@@ -21,11 +21,11 @@ function handle_file(){
     img.src = URL.createObjectURL(file);
     img.onload = function(e){
       contain = img_contain(_canvas.width,_canvas.height,img.width,img.height);
-      console.log(_canvas.width,_canvas.height,img.width,img.height);
-      console.log(_canvas.width,_canvas.height,contain.width,contain.height);
       ctx.drawImage(img, (_canvas.width-contain.width)/2, (_canvas.height-contain.height)/2, contain.width, contain.height);
+
     }
   }
+  _file.parentElement.reset();
 }
 
 _file.addEventListener('change', handle_file)

@@ -23,7 +23,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.canvas_control>label{
+.canvas_control label{
   padding: 0.4em;
   text-align: center;
   color: rgba(0, 0, 0, 0.8);
