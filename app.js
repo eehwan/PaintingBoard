@@ -24,18 +24,14 @@ const _custom_color = select("#custom_color");
 const _form_size = select("#form_size");
 const _input_width = select("#width"),
       _input_height = select("#height");
-let _canvas_width = _input_width.value,
-    _canvas_height = _input_height.value;
-    _canvas.width = _canvas_width;
-    _canvas.height = _canvas_height;
+_canvas.width = _input_width.value,
+_canvas.height = _input_height.value;
 
 function handle_size(e){
   e.preventDefault();
   if(confirm("This is in px units, and the picture will be LOST when modified.")){
-    _canvas_width = _input_width.value;
-    _canvas_height = _input_height.value;
-    _canvas.width = _canvas_width;
-    _canvas.height = _canvas_height;
+    _canvas.width = _input_width.value;
+    _canvas.height = _input_height.value;
   }
 }
 
@@ -117,16 +113,6 @@ function handle_save(){
     link.click();
   }
 }
-function handle_file(){
-  const file_list = _file.files
-  for(const file of _file.files){
-    const img = new Image();
-    img.src = URL.createObjectURL(file);
-    img.onload = function(e){
-      ctx.drawImage(img, 0, 0, _canvas.width, _canvas.height);
-    }
-  }
-}
 
 function init(){
   // 캔버스 크기
@@ -147,6 +133,5 @@ function init(){
   // 버튼
   _mode.addEventListener('change', handle_mode);
   _save.addEventListener('click', handle_save);
-  _file.addEventListener('change', handle_file);
 }
 init();
