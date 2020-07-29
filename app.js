@@ -44,6 +44,7 @@ function handle_color(color){
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
 }
+// hex코드로 변환
 function rgb2hex(rgb) {
      if (  rgb.search("rgb") == -1 ) {
           return rgb;
