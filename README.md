@@ -1,4 +1,4 @@
 # PaintingBoard
-written Vanilla Javascript
+written **Vanilla Javascript**
  
 https://eehwan.github.io/PaintingBoard/
