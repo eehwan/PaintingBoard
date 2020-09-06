@@ -20,8 +20,8 @@ function handle_file(){
     const img = new Image();
     img.src = URL.createObjectURL(file);
     img.onload = function(e){
-      contain = img_contain(_canvas.width,_canvas.height,img.width,img.height);
-      ctx.drawImage(img, (_canvas.width-contain.width)/2, (_canvas.height-contain.height)/2, contain.width, contain.height);
+      containedImg = img_contain(_canvas.width,_canvas.height,img.width,img.height);
+      ctx.drawImage(img, (_canvas.width-containedImg.width)/2, (_canvas.height-containedImg.height)/2, containedImg.width, containedImg.height);
 
     }
   }
