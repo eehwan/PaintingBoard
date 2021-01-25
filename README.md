@@ -2,6 +2,7 @@
 written in **Vanilla Javascript**
  
 https://eehwan.github.io/PaintingBoard/
+(It may not work on the mobile)
 
 ## Using
 - HTML, CSS
