@@ -118,9 +118,9 @@ const init = () => {
   ctx.lineWidth=_line_width.value
   _line_width.addEventListener('input',()=>{ctx.lineWidth=_line_width.value});
   // 색상
-  Array.from(_colors).forEach(x => x.addEventListener('click', (e) => {
-    handle_color(evenet.target.style.backgroundColor)
-  }));
+  Array.from(_colors).forEach(x => x.addEventListener('click', (e) => 
+    handle_color(e.target.style.backgroundColor)
+  ));
   _custom_color.addEventListener('input', (e) => handle_color(e.target.value));
   // 그리기
   canvas.addEventListener("mousemove", handle_mouseMove);
