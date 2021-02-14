@@ -61,6 +61,7 @@ body {
   flex-direction: row;
   align-items: flex-start;
   padding: 3em;
+  min-width: 1000px;
 }
 canvas {
   background-color: rgb(255, 255, 255);
