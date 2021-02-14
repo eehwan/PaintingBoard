@@ -27,7 +27,7 @@ const _input_width = select("#width"),
 _canvas.width = _input_width.value,
 _canvas.height = _input_height.value;
 
-function handle_size(e){
+const handle_size = (e) => {
   e.preventDefault();
   if(confirm("This is in px units, and the picture will be LOST when modified.")){
     _canvas.width = _input_width.value;
@@ -39,41 +39,41 @@ function handle_size(e){
 ctx.fillStyle = "#ffffff";
 ctx.fillRect(0,0, _canvas.width, _canvas.height);
 ctx.fillStyle = _custom_color.value;
-function handle_color(color){
+const handle_color = (color) => {
   _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
-}
+};
 // hex코드로 변환
-function rgb2hex(rgb) {
-     if (  rgb.search("rgb") == -1 ) {
-          return rgb;
-     } else {
-          rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
-          function hex(x) {
-               return ("0" + parseInt(x).toString(16)).slice(-2);
-          }
-          return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-     }
-}
+const rgb2hex = (rgb) => {
+  if (  rgb.search("rgb") == -1 ) {
+      return rgb;
+  } else {
+    rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+    function hex(x) {
+      return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+  }
+};
 
 // 그림그리기 관련
 let painting = false;
 let filling = false;
-function start_paint(){
+const start_paint = () => {
   painting = true;
-}
-function stop_paint(){
+};
+const stop_paint = () => {
   painting = false;
   ctx.closePath();
-}
+};
 
-function handle_mouseMove(){
-  const _x = event.offsetX,
-        _y = event.offsetY;
+const handle_mouseMove = (e) => {
+  const _x = e.offsetX,
+        _y = e.offsetY;
   draw(_x,_y);
-}
-function draw(_x,_y){
+};
+cosnt draw = (_x,_y) => {
   if(!filling){
     if (!painting){
       ctx.beginPath();
@@ -83,18 +83,18 @@ function draw(_x,_y){
       ctx.stroke();
     }
   }
-}
-function fill(){
-  if(filling){
+};
+const fill = () => {
+  if(filling) {
     ctx.fillRect(0,0, _canvas.width, _canvas.height);
 
     filling=false;
     _mode.value = 'draw';
   }
-}
+};
 
 // 버튼 관련
-function handle_mode(){
+const handle_mode => () {
   if (_mode.value == 'draw'){
     // _canvas.style.cursor=
     filling = false;
@@ -106,7 +106,7 @@ function handle_mode(){
     _mode.value= "draw";
   }
 }
-function handle_save(){
+const handle_save = () => {
   if(confirm("Continue download")){
     const link = document.createElement("a");
     link.href = _canvas.toDataURL();
@@ -115,17 +115,17 @@ function handle_save(){
   }
 }
 
-function init(){
+const init = () => {
   // 캔버스 크기
-  _form_size.addEventListener('submit', ()=>handle_size(event));
+  _form_size.addEventListener('submit', (e)=>handle_size(e));
   // 선 굵기
   ctx.lineWidth=_line_width.value
   _line_width.addEventListener('input',()=>{ctx.lineWidth=_line_width.value});
   // 색상
-  Array.from(_colors).forEach(x => x.addEventListener('click',
-  () => handle_color(event.target.style.backgroundColor) ));
-  _custom_color.addEventListener('input',
-  ()=> handle_color(event.target.value) );
+  Array.from(_colors).forEach(x => x.addEventListener('click', (e) => {
+    handle_color(evenet.target.style.backgroundColor)
+  }));
+  _custom_color.addEventListener('input', (e) => handle_color(e.target.value));
   // 그리기
   canvas.addEventListener("mousemove", handle_mouseMove);
   canvas.addEventListener("mousedown", start_paint);
@@ -134,5 +134,6 @@ function init(){
   // 버튼
   _mode.addEventListener('change', handle_mode);
   _save.addEventListener('click', handle_save);
-}
+};
+
 init();
