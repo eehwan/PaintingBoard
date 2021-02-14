@@ -1,18 +1,14 @@
-function select(tag){
-  return document.querySelector(tag);
-}
-
-const _html = select("html");
-const _canvas = select("canvas");
-const _line_width = select("#line_width");
+const _html = document.querySelector("html");
+const _canvas = document.querySelector("canvas");
+const _line_width = document.querySelector("#line_width");
 const _colors = document.getElementsByClassName("color")
-const _mode = select("#mode");
-const _save = select("#save");
-const _file = select("#img_upload");
+const _mode = document.querySelector("#mode");
+const _save = document.querySelector("#save");
+const _file = document.querySelector("#img_upload");
 
 const ctx = _canvas.getContext('2d');
 
-const _custom_color = select("#custom_color");
+const _custom_color = document.querySelector("#custom_color");
 
 // 펜 설정 초기화
 // ctx.strokeStyle = _custom_color.value;
@@ -21,9 +17,9 @@ const _custom_color = select("#custom_color");
 
 
 // 캔버스 크기 관련
-const _form_size = select("#form_size");
-const _input_width = select("#width"),
-      _input_height = select("#height");
+const _form_size = document.querySelector("#form_size");
+const _input_width = document.querySelector("#width"),
+      _input_height = document.querySelector("#height");
 _canvas.width = _input_width.value,
 _canvas.height = _input_height.value;
 
@@ -73,7 +69,7 @@ const handle_mouseMove = (e) => {
         _y = e.offsetY;
   draw(_x,_y);
 };
-cosnt draw = (_x,_y) => {
+const draw = (_x,_y) => {
   if(!filling){
     if (!painting){
       ctx.beginPath();
@@ -94,7 +90,7 @@ const fill = () => {
 };
 
 // 버튼 관련
-const handle_mode => () {
+const handle_mode = () => {
   if (_mode.value == 'draw'){
     // _canvas.style.cursor=
     filling = false;
@@ -105,7 +101,7 @@ const handle_mode => () {
     ctx.clearRect(0, 0, _canvas.width, _canvas.height);
     _mode.value= "draw";
   }
-}
+};
 const handle_save = () => {
   if(confirm("Continue download")){
     const link = document.createElement("a");
