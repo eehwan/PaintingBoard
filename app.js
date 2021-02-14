@@ -101,6 +101,7 @@ const handle_mode = () => {
   }else{
     ctx.clearRect(0, 0, _canvas.width, _canvas.height);
     _mode.value= "draw";
+    filling = false;
   }
 };
 const handle_save = () => {
