@@ -35,15 +35,11 @@ const handle_size = (e) => {
 ctx.fillStyle = "#ffffff";
 ctx.fillRect(0,0, _canvas.width, _canvas.height);
 ctx.fillStyle = _custom_color.value;
-const handle_color = (color) => {
-  _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-};
+
 // hex코드로 변환
 const rgb2hex = (rgb) => {
   if (  rgb.search("rgb") == -1 ) {
-      return rgb;
+    return rgb;
   } else {
     rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
     function hex(x) {
@@ -51,6 +47,11 @@ const rgb2hex = (rgb) => {
     }
     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
   }
+};
+const handle_color = (color) => {
+  _custom_color.value = rgb2hex(color); //input color value에는 hex값만 들어감
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
 };
 
 // 그림그리기 관련
