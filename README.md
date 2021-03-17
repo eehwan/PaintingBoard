@@ -10,7 +10,7 @@ https://eehwan.github.io/PaintingBoard/
 - HTML Canvas
 
 ## Feature
-- Custumoze color, width of line.
+- Custumze color, width of line.
 - Resize the canvas.
 - Draw lines, fill the canvas, clear the canvas.
 - Load your own image and draw on it.
